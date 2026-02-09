@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+    <div style={styles.app}>
+      <header style={styles.header}>
+        <h1 style={styles.title}>Habit Buddy</h1>
+      </header>
+
+      <main style={styles.main}>
+        <p style={styles.placeholder}>
+          🚧 App scaffold ready. Next: navigation & screens.
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      </main>
+
+      <nav style={styles.nav}>
+        <button style={styles.navButton}>Today</button>
+        <button style={styles.navButton}>Habits</button>
+        <button style={styles.navButton}>Insights</button>
+        <button style={styles.navButton}>Buddy</button>
+      </nav>
+    </div>
+  );
 }
 
-export default App
+const styles: Record<string, React.CSSProperties> = {
+  app: {
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#0B1220",
+    color: "#E5E7EB",
+    fontFamily: "system-ui, sans-serif",
+  },
+  header: {
+    padding: "16px",
+    textAlign: "center",
+    borderBottom: "1px solid #1F2937",
+  },
+  title: {
+    margin: 0,
+    fontSize: "1.25rem",
+  },
+  main: {
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  placeholder: {
+    opacity: 0.7,
+  },
+  nav: {
+    display: "flex",
+    borderTop: "1px solid #1F2937",
+  },
+  navButton: {
+    flex: 1,
+    padding: "12px 0",
+    background: "none",
+    border: "none",
+    color: "#E5E7EB",
+    fontSize: "0.9rem",
+  },
+};

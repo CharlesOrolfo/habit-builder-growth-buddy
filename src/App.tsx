@@ -1,6 +1,14 @@
 import { useState } from "react";
+import TodayScreen from "./screens/TodayScreen";
+import HabitsScreen from "./screens/HabitsScreen";
+import InsightsScreen from "./screens/InsightsScreen";
+import BuddyScreen from "./screens/BuddyScreen";
+
+type Tab = "today" | "habits" | "insights" | "buddy";
 
 export default function App() {
+  const [tab, setTab] = useState<Tab>("today");
+
   return (
     <div style={styles.app}>
       <header style={styles.header}>
@@ -8,18 +16,45 @@ export default function App() {
       </header>
 
       <main style={styles.main}>
-        <p style={styles.placeholder}>
-          🚧 App scaffold ready. Next: navigation & screens.
-        </p>
+        {tab === "today" && <TodayScreen />}
+        {tab === "habits" && <HabitsScreen />}
+        {tab === "insights" && <InsightsScreen />}
+        {tab === "buddy" && <BuddyScreen />}
       </main>
 
       <nav style={styles.nav}>
-        <button style={styles.navButton}>Today</button>
-        <button style={styles.navButton}>Habits</button>
-        <button style={styles.navButton}>Insights</button>
-        <button style={styles.navButton}>Buddy</button>
+        <NavButton label="Today" active={tab === "today"} onClick={() => setTab("today")} />
+        <NavButton label="Habits" active={tab === "habits"} onClick={() => setTab("habits")} />
+        <NavButton label="Insights" active={tab === "insights"} onClick={() => setTab("insights")} />
+        <NavButton label="Buddy" active={tab === "buddy"} onClick={() => setTab("buddy")} />
       </nav>
     </div>
+  );
+}
+
+function NavButton({
+  label,
+  active,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        flex: 1,
+        padding: "12px 0",
+        background: "none",
+        border: "none",
+        color: active ? "#38BDF8" : "#E5E7EB",
+        fontWeight: active ? 600 : 400,
+      }}
+    >
+      {label}
+    </button>
   );
 }
 
@@ -43,23 +78,10 @@ const styles: Record<string, React.CSSProperties> = {
   },
   main: {
     flex: 1,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  placeholder: {
-    opacity: 0.7,
+    padding: "16px",
   },
   nav: {
     display: "flex",
     borderTop: "1px solid #1F2937",
-  },
-  navButton: {
-    flex: 1,
-    padding: "12px 0",
-    background: "none",
-    border: "none",
-    color: "#E5E7EB",
-    fontSize: "0.9rem",
   },
 };

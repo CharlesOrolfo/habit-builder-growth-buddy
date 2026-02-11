@@ -60,13 +60,14 @@ function NavButton({
 
 const styles: Record<string, React.CSSProperties> = {
   app: {
-    height: "100vh",
+    height: "100dvh",
     display: "flex",
     flexDirection: "column",
     backgroundColor: "#0B1220",
     color: "#E5E7EB",
     fontFamily: "system-ui, sans-serif",
-    maxWidth: "480px",
+    maxWidth: "420px",
+    width: "100%",
     margin: "0 auto",
     borderLeft: "1px solid #1F2937",
     borderRight: "1px solid #1F2937",

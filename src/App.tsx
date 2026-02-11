@@ -66,6 +66,10 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundColor: "#0B1220",
     color: "#E5E7EB",
     fontFamily: "system-ui, sans-serif",
+    maxWidth: "480px",
+    margin: "0 auto",
+    borderLeft: "1px solid #1F2937",
+    borderRight: "1px solid #1F2937",
   },
   header: {
     padding: "16px",
